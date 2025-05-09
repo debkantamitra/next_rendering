@@ -1,4 +1,5 @@
 import PostList, { Post } from "@/components/PostList";
+import LikeButton from "@/components/LikeButton";
 
 export async function getServerSideProps() {
   const res = await fetch(
@@ -16,7 +17,7 @@ export default function SSRPage({ posts }: { posts: Post[] }) {
     <div>
       <h1>🍳 SSR - Server-Side Rendering</h1>
       <p>This page is rendered on every request using getServerSideProps.</p>
-
+      <LikeButton /> {/* 👈 Hydration required here */}
       <PostList posts={posts} />
     </div>
   );
